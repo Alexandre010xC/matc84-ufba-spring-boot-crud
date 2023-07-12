@@ -39,7 +39,7 @@ public class InvoiceRepositoryAdapter implements InvoiceRepositoryPort {
 
     @Override
     public InvoiceModel create(BigDecimal totalValue, LocalDate dueDate) {
-        InvoiceEntity invoice = InvoiceEntity.InvoiceEntityBuilder.anInvoiceEntity().withTotalValue(totalValue).withDueDate(dueDate).build();
+        InvoiceEntity invoice = InvoiceEntity.InvoiceEntityBuilder.anInvoiceEntity().withUuid(UUID.randomUUID().toString()).withTotalValue(totalValue).withDueDate(dueDate).withCreatedAt(LocalDateTime.now()).build();
         this.invoiceRepository.save(invoice);
 
         return InvoiceMapper.toModel(invoice);

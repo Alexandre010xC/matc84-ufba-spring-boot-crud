@@ -43,6 +43,6 @@ public class InvoiceController {
     public ResponseEntity<Object> create(@RequestBody @Validated InvoiceDTO invoice) {
         InvoiceModel response = this.invoiceServicePort.create(invoice.totalValue,invoice.dueDate);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
